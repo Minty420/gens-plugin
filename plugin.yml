@@ -1,0 +1,24 @@
+name: GensPlugin
+version: '1.0.0'
+main: com.yourserver.gens.GensPlugin
+api-version: '1.21'
+author: YourServer
+description: Plot-based Gens core with 120 generator levels, unlimited generators per plot, and a vacuum collector item.
+softdepend: [Vault]
+
+commands:
+  gens:
+    description: Main gens command (buy/upgrade/sell/gui/info)
+    usage: /gens <buy|upgrade|sell|gui|info>
+  plot:
+    description: Plot management
+    usage: /plot <claim|home|tp|info>
+  vacuum:
+    description: Admin - give a vacuum collector item
+    usage: /vacuum give <player>
+    permission: gens.admin
+
+permissions:
+  gens.admin:
+    description: Access to gens admin commands
+    default: op

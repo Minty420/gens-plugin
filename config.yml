@@ -1,0 +1,59 @@
+# =========================================================
+#  GensPlugin configuration
+# =========================================================
+
+# The world your gens plots live in. This world should be a
+# superflat/void world you create ahead of time on the server.
+gens-world: "gens_world"
+
+# ---------------------------------------------------------
+#  PLOTS
+# ---------------------------------------------------------
+plots:
+  # Size of one square plot (blocks per side)
+  size: 64
+  # Gap of empty space between plots
+  gap: 8
+  # Y level plots are built on (flat world floor)
+  floor-y: 100
+  # Block the plot floor is made of when a plot is first generated
+  floor-block: "STONE_BRICKS"
+  # Block used as the plot border/wall marker
+  border-block: "SEA_LANTERN"
+
+# ---------------------------------------------------------
+#  GENERATOR ECONOMY FORMULA
+#  cost(level)   = base-upgrade-cost * (upgrade-growth ^ (level-1))
+#  sell(level)   = base-sell-price   * (sell-growth   ^ (level-1))
+#  ticks(level)  = max(min-spawn-ticks, base-spawn-ticks - level*ticks-decrease-per-level)
+# ---------------------------------------------------------
+economy:
+  max-level: 120
+
+  base-upgrade-cost: 1000
+  upgrade-growth: 1.085
+
+  base-sell-price: 5.0
+  sell-growth: 1.07
+
+  base-spawn-ticks: 200     # 10s at level 1
+  min-spawn-ticks: 20       # 1s floor at high levels
+  ticks-decrease-per-level: 1.5
+
+  # No cap on number of generators a player can place per plot.
+  generator-limit-per-plot: -1   # -1 = unlimited
+
+# ---------------------------------------------------------
+#  VACUUM ITEM
+# ---------------------------------------------------------
+vacuum:
+  # Radius (in blocks) around the holder that counts as "collecting range"
+  # A vacuum in a player's inventory anywhere on their OWN plot collects
+  # from every generator on that plot regardless of this radius.
+  off-plot-radius: 6
+  display-name: "&b&lVacuum Collector"
+
+# Fallback internal economy is used automatically if Vault + an economy
+# plugin (e.g. EssentialsX) are not detected on the server.
+internal-economy:
+  starting-balance: 500.0
